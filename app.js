@@ -7,17 +7,20 @@ const app = express();
 const cors = require('cors');
 const config = require('./app/config/config');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cors);
-
 // conexao com o banco de dados
-mongoose.connect(config.connectionString, {useNewUrlParser: true});
+mongoose.connect(config.connectionString, {useNewUrlParser: true}, (err) => {
+    if (err) console.log(err);
+    
+    console.log('banco de dados conectado');
+});
 
 // rotas
 const homeRoute = require('./app/routes/index');
 const retornoRoute = require('./app/routes/retornos');
 const analistaRoute = require('./app/routes/usuario');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // caminho das rotas
 
