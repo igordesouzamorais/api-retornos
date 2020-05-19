@@ -6,7 +6,7 @@ const Crypto = require('../utils/Crypt');
 exports.novo = async (data) => {
     let user = new Usuario();
 
-    let senhaNova = Crypto.criptografar(data.senha);
+    let senhaNova = await Crypto.criptografar(data.senha);
     
     user.nome = data.nome;
     user.email = data.email;

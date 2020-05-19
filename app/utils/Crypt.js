@@ -8,15 +8,15 @@ const DADOS_CRIPTOGRAFAR = {
     tipo : "hex"
 };
 
-exports.criptografar = (senha) => {
+exports.criptografar = async (senha) => {
     const cipher = crypto.createCipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
     cipher.update(senha);
-    return cipher.final(DADOS_CRIPTOGRAFAR.tipo);
+    return await cipher.final(DADOS_CRIPTOGRAFAR.tipo);
 };
 
-exports.descriptografar = (senha) => {
+exports.descriptografar = async (senha) => {
     const decipher = crypto.createDecipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
     decipher.update(senha, DADOS_CRIPTOGRAFAR.tipo);
 
-    return decipher.final();
+    return await decipher.final();
 };
