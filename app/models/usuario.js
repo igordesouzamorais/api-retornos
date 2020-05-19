@@ -19,12 +19,12 @@ const usuarioSchema = new Schema({
         type: String,
         required: true
     },
-    tipo: [{
+    tipo: {
         type: String,
         enum: ['admin', 'analista', 'telefonista'],
         default: 'analista',
         require: true
-    }]
+    }
 });
 
 module.exports = mongoose.model('Usuario', usuarioSchema);
