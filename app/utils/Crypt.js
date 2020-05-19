@@ -11,7 +11,7 @@ const DADOS_CRIPTOGRAFAR = {
 exports.criptografar = (senha) => {
     const cipher = crypto.createCipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
     cipher.update(senha);
-    cipher.final(DADOS_CRIPTOGRAFAR.tipo);
+    return cipher.final(DADOS_CRIPTOGRAFAR.tipo);
 };
 
 exports.descriptografar = (senha) => {
