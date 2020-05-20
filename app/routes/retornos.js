@@ -5,7 +5,7 @@ const router = express.Router();
 
 const retornoController = require('../controllers/retornos');
 
-router.post('/', retornoController.post);
+router.post('/', retornoController.novo);
 router.get('/', retornoController.listar);
 
 module.exports = router;

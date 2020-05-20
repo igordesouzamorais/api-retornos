@@ -2,7 +2,7 @@
 
 const retornoDao = require("../DAO/retorno-dao");
 
-exports.post = async (req, res, next) => {
+exports.novo = async (req, res, next) => {
   try {
     await retornoDao.novo(req.body);
     res.status(201).send({ message: "Retorno cadastrado com sucesso!" });
@@ -14,7 +14,7 @@ exports.post = async (req, res, next) => {
 exports.listar = async (req, res, next) => {
   try {
     let data = await retornoDao.listar();
-    res.status(200).send({ data: data });
+    res.status(200).send({ retornos: data });
   } catch (e) {
     res
       .status(400)
